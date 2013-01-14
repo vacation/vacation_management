@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121229075851) do
+ActiveRecord::Schema.define(:version => 20130114085907) do
+
+  create_table "profiles", :force => true do |t|
+    t.string   "email"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "comment"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "time"
+    t.string   "leave_type"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"

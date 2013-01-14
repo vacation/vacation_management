@@ -1,0 +1,23 @@
+<div class="show_profile">
+	<table>
+		<tr>
+			<th>Type</th>
+			<th>Time</th>
+			<th>Message</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>	
+	<% @profiles.each do |profile| %>
+		<tr>
+			<td><%= profile.leave_type %></td>
+			<td><%= profile.time %></td>
+			<td><%= profile.comment %></td>
+			<td><%= link_to 'Show', profile %></td>
+			<td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+			<!--<td><%= link_to 'Destroy', profile, method: :delete, data:{ confirm: 'Are you sure?' } %></td>-->
+			<td><%= button_to 'Destroy', profile, :method=>:delete, :confirm=>"Are you sure?" %></td>
+		</tr>
+	<% end %>
+	</table>
+</div>

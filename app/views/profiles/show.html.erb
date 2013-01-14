@@ -1,0 +1,21 @@
+ <p id="notice"><%= notice %></p>  
+
+
+	<table>
+		<tr>
+			<th>Type</th>
+			<th>Time</th>
+			<th>Message</th>
+			<th></th>
+			<th></th>
+		</tr>	
+		<tr>
+			<td><%= @profile.leave_type%></td>
+			<td><%= @profile.time%></td>
+			<td><%= @profile.comment%></td>
+			<td><%= link_to 'Edit', edit_profile_path(@profile) %></td>
+	
+			<td><%= button_to 'Destroy', @profile, :method=>:delete, :confirm=>"Are you sure?" %></td>
+		</tr>
+	</table>
+

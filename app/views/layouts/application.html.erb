@@ -3,7 +3,7 @@
 <head>
   <title>Auth</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "rails.validations","rails.validations.custom", "application" %>
+  <%= javascript_include_tag  "application" ,"rails.validations","rails.validations.custom"%>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,16 +11,42 @@
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, :id => "flash#{name}" %>
 <% end %>
-<%= yield %>
-<div id ="user_nav">
+<div id ="user_nav" class="nav">
   <% if current_user%>
-    Logged in as <%= current_user.email %>
+    weilcome  <%= current_user.email %>
     <%= link_to "Log out", log_out_path%>
   <% else %>
     <%= link_to "Sign_up", sign_up_path %> or
     <%= link_to "Log in", log_in_path %>
   <% end %>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="span9"><%= yield %></div>
+    <div class="span3"></div>
+</div>
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">Vacation Management</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li><%= link_to "All application" , profiles_path%></li>
+          <li><%= link_to "Price List" %></li>
+          <li><%= link_to "Contact Us" %></li>
+          <li><%= link_to "Cart" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 </body>
 </html>
