@@ -11,3 +11,10 @@
  *= require_self
  *= require_tree .
  */
+.field_with_errors{color:red;}
+lable.message{float:left;}
+.text-feild div{float:left;}
+.text-feild {overflow:hidden;clear: both;margin:10px 0;}
+#new_user{padding-top: 15px}
+.message{float:right;margin-left:5px;}
+#flashalert{color:red;}

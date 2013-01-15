@@ -1,21 +1,27 @@
- <p id="notice"><%= notice %></p>  
+<%- model_class = Profile -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @profile.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:start_date) %>:</strong></dt>
+  <dd><%= @profile.start_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:end_date) %>:</strong></dt>
+  <dd><%= @profile.end_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:comment) %>:</strong></dt>
+  <dd><%= @profile.comment %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:time) %>:</strong></dt>
+  <dd><%= @profile.time %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:leave_type) %>:</strong></dt>
+  <dd><%= @profile.leave_type %></dd>
+</dl>
 
-	<table>
-		<tr>
-			<th>Type</th>
-			<th>Time</th>
-			<th>Message</th>
-			<th></th>
-			<th></th>
-		</tr>	
-		<tr>
-			<td><%= @profile.leave_type%></td>
-			<td><%= @profile.time%></td>
-			<td><%= @profile.comment%></td>
-			<td><%= link_to 'Edit', edit_profile_path(@profile) %></td>
-	
-			<td><%= button_to 'Destroy', @profile, :method=>:delete, :confirm=>"Are you sure?" %></td>
-		</tr>
-	</table>
-
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              profiles_path, :class => 'btn btn-primary'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_profile_path(@profile), :class => 'btn' %>
+  <%= button_to 'Destroy', profile, :method=>:delete, :confirm=>"Are you sure?" %>
+</div>

@@ -1,6 +1,10 @@
 class ProfilesController < ApplicationController
   def new
-  	@profile = Profile.new
+    if current_user
+  	 @profile = Profile.new
+    else 
+      redirect_to log_in_path
+    end
   end
   def create
   	@profile = Profile.new(params[:profile])
@@ -17,12 +21,41 @@ class ProfilesController < ApplicationController
       format.json { render :json => @profile }
     end
   end
+  # def show
+  #   @user = User.find(params[:id])
+  #   @profile = Profile.where(:email => params[@user.email]).first
+  #   respond_to do |format|
+  #     if @profile
+  #       format.html # show.html.erb
+  #       format.json { head :no_content }
+  #     else 
+  #       redirect_to new_profile_path
+  #     end
+  #   end
+  # end
   def index
-  	@profiles = Profile.all
-  	respond_to do |format|
-	    format.html  # index.html.erb
-	    format.json  { render :json => @profiles }
-  	end
+    if current_user
+    	@profiles = Profile.where(:email => current_user.email)
+    	respond_to do |format|
+  	    format.html  # index.html.erb
+  	    format.json  { render :json => @profiles }
+    	end
+    else 
+       redirect_to log_in_path
+    end
+  end
+
+  def all
+    if current_user && current_user.email == "admin@scilearn.com.cn"
+       @profiles = Profile.all
+      respond_to do |format|
+        format.html  # all.html.erb
+        format.json  { render :json => @profiles }
+      end
+    else 
+       redirect_to log_in_path
+    end
+
   end
 
 def destroy
@@ -31,7 +64,7 @@ def destroy
 	 
 	  respond_to do |format|
 	    format.html { redirect_to profiles_path}
-	    format.json { head :no_content}
+	    format.json { render :json => @profile}
 	  end
 end
 
@@ -44,12 +77,16 @@ def update
 
   respond_to do |format|
     if @profile.update_attributes(params[:profile])
-      format.html {redirect_to @profile, notice: 'updated'}
+      format.html {redirect_to profiles_path, notice: 'updated'}
       format.json {head :no_content}
     else
       format.html {render action:"edit"}
       format.json {render json: @profile.errors, status: :unprocessable_entity}
     end
   end
+end
+
+def show_profile_by_user
+
 end
 end

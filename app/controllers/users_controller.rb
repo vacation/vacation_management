@@ -6,18 +6,21 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_url, :notice => "Signed up!"
+      redirect_to profiles_path, :notice => "Signed up!"
     else
       render "new"
     end
   end
   def show
     @user = User.find(params[:id])
-
+    @profiles = Profile.where(:email => @user.email)
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
-
+     if @profiles
+        format.html # show.html.erb
+        format.json { head :no_content }
+       else 
+        redirect_to new_profile_path
+       end
+     end
   end
 end

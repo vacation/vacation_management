@@ -7,7 +7,10 @@ Auth::Application.routes.draw do
   get "log_in" => "sessions#new",:as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "sign_up" => "users#new", :as => "sign_up"
-  #get "user_profile" => "profiles#new", :as => "user_profile"
+  get "new_profile" => "profiles#new", :as => "new_profile"
+  get "myProfile" => "users#show", :as => "myProfile"
+   get "all_application" => "profiles#all", :as => "all_application"
+
  # get "destroy" => "profiles#destroy", :as=> "destroy"
   
   root :to => "users#new"

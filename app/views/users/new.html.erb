@@ -9,22 +9,23 @@
         <% end %>
       </ul>
     </div>
-  <% end %>
-  <p>
-    <%= f.label :email %><br/>
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :username %><br/>
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :password %><br/>
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %><br/>
-    <%= f.password_field :password_confirmation%>
-  </p>
+  <% end %>    
+  <div class="controls text-feild">
+       <div class="text-label"><%= f.label :email %></div>
+       <div><%= f.text_field :email %></div>
+    
+  </div>
+  <div class="controls text-feild">
+    <div class="text-label"><%= f.label :username %></div>
+    <div><%= f.text_field :username %></div>
+  </div>
+ <div class="controls text-feild">
+    <div class="text-label"><%= f.label :password %></div>
+   <div> <%= f.password_field :password %></div>
+   </div>
+  <div class="controls text-feild">
+   <div class="text-label"> <%= f.label :password_confirmation %></div>
+    <div><%= f.password_field :password_confirmation%></div>
+  </div>
   <p class="button"><%= f.submit "sign up" %></p>
 <% end %>
