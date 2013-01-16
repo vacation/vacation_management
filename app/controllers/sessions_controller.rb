@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   def new
+    if session[:user_id]
+      redirect_to User.find(session[:user_id]), :notice => "logged in!"
+    end
   end
   def destroy
     session[:user_id] = nil

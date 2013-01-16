@@ -21,10 +21,13 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
+
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'client_side_validations'
+gem 'jquery_datepicker'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

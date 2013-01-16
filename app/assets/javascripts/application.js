@@ -11,6 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
 //= require twitter/bootstrap
+//= require jquery_ujs
+//= require jquery-ui
+//= require jquery-ui-timepicker-addon
 //= require_tree .

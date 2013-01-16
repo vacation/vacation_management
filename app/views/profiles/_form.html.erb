@@ -21,17 +21,13 @@
   <p>
     <%= f.label :time %><br/>
     from
-    <%= f.datetime_select :start_date %>
+    <%= f.datetime_picker "start_date" %>
     to
-    <%= f.datetime_select :end_date %>
-  </p>
-  <p>
-    <%= f.label :time %>
-    <%= f.text_field :time %>H
+    <%= f.datetime_picker "end_date" %>
   </p>
   <p>
     <%= f.label :comment %><br/>
     <%= text_area_tag("profile[comment]", :comment ) %>
   </p>
-  <p class="button"><%= f.submit  "create"%></p>
+  <p class="button"><%= f.submit  "Submit"%></p>
 <% end %>
