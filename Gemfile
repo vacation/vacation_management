@@ -13,7 +13,7 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  #gem 'coffee-rails', '~> 3.2.1'
   gem 'less-rails'
   gem 'therubyracer'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -23,7 +23,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', "~>1.0.19"
 gem 'client_side_validations'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -8,17 +8,19 @@ class SessionsController < ApplicationController
   def create
     #user = User.find_by_email(params[:email])
     user = User.authenticate(params[:email],params[:password])
-    profile = Profile.find_by_email(params[:email])
-    if user
+    #profile = Profile.find_by_email(params[:email])
+    
+    if user && (user.approved || user.email == "admin@scilearn.com.cn")
       session[:user_id] = user.id
-      #redirect_to user
       respond_to do |format|
         format.html { redirect_to profiles_path}
         format.json { render :json => @index}
       end
-    else
-      flash.now.alert = "Invalid email or password"
+    elsif user
+      flash.now.alert = "Please wait to approval!"
       render "new"
+    else
+      flash.now.alert = "Invalied email or password!"
     end
   end
 

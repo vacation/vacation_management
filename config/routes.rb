@@ -7,16 +7,21 @@ Auth::Application.routes.draw do
   get "log_in" => "sessions#new",:as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "sign_up" => "users#new", :as => "sign_up"
+  get "users" => "users#index", :as => "users"
   get "new_profile" => "profiles#new", :as => "new_profile"
   get "myProfile" => "users#show", :as => "myProfile"
-   get "all_application" => "profiles#all", :as => "all_application"
+  get "all_application" => "profiles#all", :as => "all_application"
 
  # get "destroy" => "profiles#destroy", :as=> "destroy"
   
-  root :to => "users#new"
+  root :to => "sessions#new"
   resources :users
   resources :sessions
   resources :profiles
+
+  resources :users do
+    put 'approval', :on => :member
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

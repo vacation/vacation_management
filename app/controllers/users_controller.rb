@@ -23,4 +23,31 @@ class UsersController < ApplicationController
        end
      end
   end
+
+  def index
+    @users = User.all
+    if @users
+      respond_to do |format|
+        format.html  # all.html.erb
+        format.json  { render :json => @users }
+      end
+    end
+  end
+
+  def edit
+
+  end
+  # put
+  # /users/1/approval
+  def approval
+  @user = User.find(params[:id])
+
+  respond_to do |format|
+    if @user.update_attribute("approved", "true")
+      format.js { render :json => {:result =>"success111" , :user_id => @user.id.to_s},:layout => false, :status=>200}
+    else
+      format.js { render :json => {:result =>"error111" , :user_id => @user.id.to_s},:layout => false, :status=>500}
+    end
+  end
+end
 end

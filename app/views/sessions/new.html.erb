@@ -1,12 +1,12 @@
 <h1>Log in</h1>
 <%= form_tag sessions_path do %>
-  <p>
-    <%= label_tag :email %><br/>
-    <%= text_field_tag :email, params[:email] %>
-  </p>
-  <p>
-    <%= label_tag :password %><br/>
-    <%= password_field_tag :password %>
-  </p>
+  <div class="controls text-feild">
+    <div class="text-label"><%= label_tag :email %></div>
+    <div><%= text_field_tag :email, params[:email] %></div>
+  </div>
+  <div class="controls text-feild">
+    <div class="text-label"><%= label_tag :password %></div>
+    <div><%= password_field_tag :password %></div>
+  </div>
   <p class="translation_missing"><%= submit_tag "log in"%></p>
 <% end %>

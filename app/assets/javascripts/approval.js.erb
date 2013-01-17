@@ -1,0 +1,24 @@
+$(document).ready(function(){
+	$(".approval").click(function(e){
+		var url = $(this).attr("href");
+		var context = this;
+		$.ajax({
+			url: url,
+			type: "PUT",
+			async: false,
+			complete: function (data) {
+			    if (data.status === 200) {
+			        $(context).parent().append("<i class='icon-ok approved'></i>");
+					$(context).remove();
+			    }
+			    else {
+			        var data = xhr.responseText;
+			       	alert(data);
+			    }
+			}
+		});
+		return false;
+	});
+		
+		
+});

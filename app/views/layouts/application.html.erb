@@ -6,7 +6,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag  "application" ,"rails.validations","rails.validations.custom"%>
+  <%= javascript_include_tag  "application" ,"rails.validations"%>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -14,8 +14,6 @@
 
 
 <div class="container">
-
-
   <div class="row">
     <%= yield %>
     <% flash.each do |name, msg| %>
@@ -40,6 +38,7 @@
             <li class="nav-title"><%= link_to "create vacation", new_profile_path %></li>
             <% if current_user.email == "admin@scilearn.com.cn" %>
               <li class="nav-title"><%= link_to "All application", all_application_path%></li>
+              <li class="nav-title"><%= link_to "Users", users_path%></li>
             <% end %>
             <li class="nav-title" style="float:right"> <%= link_to "Log out", log_out_path%></li>
             <li class="user-show" style="float:right">weilcome  <%= current_user.email %></li>

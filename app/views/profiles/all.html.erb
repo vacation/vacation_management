@@ -24,9 +24,7 @@
         <td><%= profile.time %></td>
         <td><%= profile.leave_type %></td>
         <td>
-          <div class="float_left"><%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_profile_path(profile), :class => 'btn btn-primary btn-small eidt-btn' %>
-          </div>
+          
           <div class="float_left">
           <%= button_to 'Approval', profile,  :class => 'btn  btn-danger'%>
           </div>
