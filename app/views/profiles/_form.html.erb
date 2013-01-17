@@ -4,16 +4,11 @@
       <%= hidden_field_tag "profile[email]", current_user.email %>
   <% end %>
   <div class="control-group">
-    <%= f.label :start_date, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.datetime_select :start_date, :class => 'datetime_select' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :end_date, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.datetime_select :end_date, :class => 'datetime_select' %>
-    </div>
+    <%= f.label :time %><br/>
+    from
+    <%= f.datetime_picker "start_date" %>
+    to
+    <%= f.datetime_picker "end_date" %>
   </div>
   <div class="control-group">
     <%= f.label :comment, :class => 'control-label' %>
