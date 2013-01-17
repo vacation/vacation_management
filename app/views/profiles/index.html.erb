@@ -19,7 +19,7 @@
         <td><%= profile.start_date %></td>
         <td><%= profile.end_date %></td>
         <td><%= profile.comment %></td>
-        <td><%= profile.time %></td>
+        <td><%= profile.hour %>h<%= profile.minute %>m</td>
         <td><%= profile.leave_type %></td>
         <td>
           <div class="float_left"><%= link_to t('.edit', :default => t("helpers.links.edit")),

@@ -4,28 +4,44 @@
       <%= hidden_field_tag "profile[email]", current_user.email %>
   <% end %>
   <div class="control-group">
-    <%= f.label :time %><br/>
-    from
-    <%= f.datetime_picker "start_date" %>
-    to
-    <%= f.datetime_picker "end_date" %>
+    <%= f.label :time, :class => 'control-label' %>
+    <div class="controls">
+      <div class="input-prepend input-append">
+        <%= f.text_field :start_date, :class => "input-medium" %>
+        <span class="add-on">to</span>
+        <%= f.text_field :end_date, :class => "input-medium" %>
+      </div>
+    </div>
   </div>
   <div class="control-group">
     <%= f.label :comment, :class => 'control-label' %>
     <div class="controls">
-      <%= text_area_tag("profile[comment]", :comment , :rows => "3") %>
+      <%= text_area_tag("profile[comment]", :comment , :rows => "5" ,:class => "input-xxlarge")%>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :time, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :time, :class => 'text_field' %>
+      <div class="input-append input-prepend">
+        <%= f.text_field :hour, :class => 'text_field input-mini' %>
+        <span class="add-on">Hour</span>
+        <%= f.text_field :minute, :class => 'text_field input-mini' %>
+        <span class="add-on">Minute</span>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :leave_type, :class => 'control-label' %>
     <div class="controls">
-      <%= select_tag "profile[leave_type]", options_for_select(["annual","personal","sick"],"annual") %>
+      <label class="radio inline">
+        <%= radio_button_tag "profile[leave_type]", "annual", true%>annual
+      </label>
+      <label class="radio inline">
+        <%= radio_button_tag "profile[leave_type]", "personal", false%>personal
+      </label>
+      <label class="radio inline">
+        <%= radio_button_tag "profile[leave_type]", "sick", false%>sick
+      </label>
     </div>
   </div>
 

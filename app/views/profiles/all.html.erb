@@ -9,7 +9,7 @@
       <th><%= model_class.human_attribute_name(:start_date) %></th>
       <th><%= model_class.human_attribute_name(:end_date) %></th>
       <th><%= model_class.human_attribute_name(:comment) %></th>
-      <th><%= model_class.human_attribute_name(:time) %></th>
+      <th><%= model_class.human_attribute_name(:hour) %></th>
       <th><%= model_class.human_attribute_name(:leave_type) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -21,7 +21,7 @@
         <td><%= profile.start_date %></td>
         <td><%= profile.end_date %></td>
         <td><%= profile.comment %></td>
-        <td><%= profile.time %></td>
+        <td><%= profile.hour %>h<%= profile.minute %>m</td>
         <td><%= profile.leave_type %></td>
         <td>
           
