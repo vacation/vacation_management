@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(:version => 20130117094210) do
     t.datetime "updated_at",    :null => false
     t.string   "auth_token"
     t.string   "approved"
+    t.integer  "total_times"
+    t.string   "employee_type"
   end
 
 end

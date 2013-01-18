@@ -14,15 +14,43 @@
       <% if user.email != "admin@scilearn.com.cn"%>
       <tr>
         
-      	<td><%= user.email %></td>
+      	<td width="25%"><%= user.email %></td>
         
-        <td>
-          <div class="float_left">
-             <% if !user.approved %>
-              <%= link_to 'Approval', user, :href =>"/users/" + user.id.to_s + "/approval", :action => "approval", :class => "btn  btn-danger approval", :id => "user_" + user.id.to_s , :remote => true%>
-              <% else %>
-              <i class='icon-ok approved'></i>
-           <% end %>
+        <td width="75%">
+          <div id="user_setting" style="display:none">
+            <%= form_for user, :remote => true, :html => { :class => 'form-inline' } do |f| %>
+              <div class="control-group float_left">
+                <div class="float_left label-inline"><%= f.label :Employee, :class => 'control-label float_left' %></div>
+                <div class="controls float_left">
+                  <%= select_tag "user[employee_type]", options_for_select(["common","special
+"],"common") %>
+                </div>
+             </div>
+             <div class="control-group float_left">
+                <div class="float_left label-inline"><%= f.label :Total, :class => 'control-label float_left' %></div>
+                <div class="controls float_left">
+                  <%= f.text_field :total_times, :class => 'text_field input-small' %> H
+                </div>
+              </div>
+              <div class="float_left form-btn">
+
+                <%= link_to 'Save', user, :href => "/users/" + user.id.to_s + "/setting",  :class => "btn btn-primary setting save-setting", :id => "user_setting" + user.id.to_s %>
+                <a href="#" id="cancle_setting" class="btn">Cancle</a>
+               
+              </div>
+            <% end %>
+          </div>
+          <div id="btn_container">
+             <div class="float_left">
+              <%= link_to 'Setting', user, :class => "btn btn-primary setting", :id => "btn_setting", :remote => true%>
+            </div>
+            <div class="float_left">
+               <% if !user.approved %>
+                <%= link_to 'Approval', user, :href =>"/users/" + user.id.to_s + "/approval", :action => "approval", :class => "btn  btn-danger approval", :id => "user_" + user.id.to_s , :remote => true%>
+                <% else %>
+                <i class='icon-ok approved'></i>
+             <% end %>
+            </div>
           </div>
         </td>
       </tr>

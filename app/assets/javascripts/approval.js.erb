@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$(".approval").click(function(e){
+	$(".approval").click(function(){
 		var url = $(this).attr("href");
 		var context = this;
 		$.ajax({
@@ -19,6 +19,5 @@ $(document).ready(function(){
 		});
 		return false;
 	});
-		
-		
+	
 });
