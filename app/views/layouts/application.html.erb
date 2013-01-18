@@ -31,9 +31,13 @@
       </a>
       <div class="nav-collapse">
         <ul class="nav">
-          <li class="brand"><a href="#"><i class="icon-home icon-white"></i> Vacation Management</a></li>
-        
-           <% if current_user %>
+          <li class="brand">
+            <%= link_to (log_in_path) do%>
+              <i class="icon-home icon-white"></i>
+              Vacation Management
+            <% end %>
+          </li>        
+          <% if current_user %>
             <li class="nav-title"><%= link_to "My application" , profiles_path %></li>
             <li class="nav-title"><%= link_to "create vacation", new_profile_path %></li>
             <% if current_user.email == "admin@scilearn.com.cn" %>
@@ -42,16 +46,11 @@
             <% end %>
             <li class="nav-title" style="float:right"> <%= link_to "Log out", log_out_path%></li>
             <li class="user-show" style="float:right">weilcome  <%= current_user.email %></li>
-                
           <% else %>
-           
-           <li class="nav-title" style="float:right"> <%= link_to "Log in", log_in_path %> </li>
+            <li class="nav-title" style="float:right"> <%= link_to "Log in", log_in_path %> </li>
             <li class="nav-title" style="float:right"><%= link_to "Sign up", sign_up_path %></li>
-      
           <% end %>
-          
         </ul>
-
       </div>
     </div>
   </div>
