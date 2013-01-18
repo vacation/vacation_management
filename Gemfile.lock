@@ -39,7 +39,6 @@ GEM
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
-
     jquery-rails (2.1.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -98,7 +97,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    therubyracer (0.11.2)
+    therubyracer (0.11.3)
       libv8 (~> 3.11.8.12)
       ref
     thor (0.16.0)
@@ -121,14 +120,9 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby
   client_side_validations
-<<<<<<< HEAD
-  jquery-rails (~> 1.0.19)
-=======
-  coffee-rails (~> 3.2.1)
   jquery-rails
   jquery-ui-rails
   jquery_datepicker
->>>>>>> 86302efb8d39cd52b458d49bd3cbcf102d3af7c1
   less-rails
   mysql2
   rails (= 3.2.9)

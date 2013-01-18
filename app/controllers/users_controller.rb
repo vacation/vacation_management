@@ -33,9 +33,22 @@ class UsersController < ApplicationController
       end
     end
   end
-
+  # post
+  # /users/1/setting
   def edit
+    @user = User.find(params[:id])
+  end
 
+  def setting
+    @user = User.find(params[:id])
+    respond_to do |format|
+      #if @user.update_attributes("employee_type" => params[:employee_type],"total_times" => params[:total_times])
+      if @user.update_attribute("employee_type", params[:employee_type]) && @user.update_attribute("total_times", params[:total_times])
+        format.js { render :json => {:result =>"success" , :user_id => @user.id.to_s},:layout => false, :status=>200}
+      else
+        format.js { render :json => {:result =>"error" , :user_id => @user.id.to_s},:layout => false, :status=>500}
+      end
+    end
   end
   # put
   # /users/1/approval
@@ -44,9 +57,9 @@ class UsersController < ApplicationController
 
   respond_to do |format|
     if @user.update_attribute("approved", "true")
-      format.js { render :json => {:result =>"success111" , :user_id => @user.id.to_s},:layout => false, :status=>200}
+      format.js { render :json => {:result =>"success1" , :user_id => @user.id.to_s},:layout => false, :status=>200}
     else
-      format.js { render :json => {:result =>"error111" , :user_id => @user.id.to_s},:layout => false, :status=>500}
+      format.js { render :json => {:result =>"error" , :user_id => @user.id.to_s},:layout => false, :status=>500}
     end
   end
 end

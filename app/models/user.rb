@@ -7,7 +7,7 @@ class EmailValidator < ActiveModel::EachValidator
 end
 class User < ActiveRecord::Base
   #has_secure_password
-   attr_accessible :password, :email, :username, :password_confirmation,:approved
+   attr_accessible :password, :email, :username, :password_confirmation,:approved,:total_times,:employee_type
    attr_accessor :password#,:approved
    before_save :encrypt_password
    validates :password, :confirmation => true, :on => :create

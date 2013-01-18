@@ -8,7 +8,7 @@ gem 'rails', '3.2.9'
 gem 'mysql2'
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
-
+gem 'jquery-rails'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -24,7 +24,6 @@ group :assets do
 
 end
 
-gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 gem 'client_side_validations'
