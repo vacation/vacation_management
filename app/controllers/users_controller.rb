@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       #if @user.update_attributes("employee_type" => params[:employee_type],"total_times" => params[:total_times])
-      if @user.update_attribute("employee_type", params[:employee_type]) && @user.update_attribute("total_times", params[:total_times])
+      if @user.update_attribute("employee_type", params[:user][:employee_type]) && @user.update_attribute("total_times", params[:user][:total_times])
         format.js { render :json => {:result =>"success" , :user_id => @user.id.to_s},:layout => false, :status=>200}
       else
         format.js { render :json => {:result =>"error" , :user_id => @user.id.to_s},:layout => false, :status=>500}

@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130117094210) do
+ActiveRecord::Schema.define(:version => 20130124081255) do
+
+  create_table "mytables", :force => true do |t|
+    t.string   "name"
+    t.string   "approved"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "profiles", :force => true do |t|
     t.string   "email"
@@ -24,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20130117094210) do
     t.string   "leave_type"
     t.decimal  "hour",       :precision => 10, :scale => 0
     t.decimal  "minute",     :precision => 10, :scale => 0
+    t.string   "approved"
   end
 
   create_table "users", :force => true do |t|
@@ -33,7 +41,6 @@ ActiveRecord::Schema.define(:version => 20130117094210) do
     t.string   "password_salt"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.string   "auth_token"
     t.string   "approved"
     t.integer  "total_times"
     t.string   "employee_type"

@@ -11,6 +11,7 @@ Auth::Application.routes.draw do
   get "new_profile" => "profiles#new", :as => "new_profile"
   get "myProfile" => "users#show", :as => "myProfile"
   get "all_application" => "profiles#all", :as => "all_application"
+  #get "setting" => "users#setting", :as => "setting"
 
  # get "destroy" => "profiles#destroy", :as=> "destroy"
   

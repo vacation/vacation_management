@@ -17,32 +17,31 @@
       	<td width="25%"><%= user.email %></td>
         
         <td width="75%">
-          <div id="user_setting" style="display:none">
-            <%= form_for user, :remote => true, :html => { :class => 'form-inline' } do |f| %>
+          <div class="user_setting" style="display:none" id="user_setting_<%= user.id.to_s%>" data-btn= "btn_<%= user.id.to_s%>">
+            <%= form_for user, :remote => true, :method => :post ,:url => { :action => "setting", :id=>user.id } , :html => { :class => 'form-inline'} do |f| %>
               <div class="control-group float_left">
                 <div class="float_left label-inline"><%= f.label :Employee, :class => 'control-label float_left' %></div>
                 <div class="controls float_left">
-                  <%= select_tag "user[employee_type]", options_for_select(["common","special
-"],"common") %>
+                  <%= select_tag "user[employee_type]", options_for_select(["common","special"],"common"), :id => "employee_type_" + user.id.to_s, :class=>"employee_type", data:{id:"total_times_" + user.id.to_s}%>
                 </div>
              </div>
              <div class="control-group float_left">
                 <div class="float_left label-inline"><%= f.label :Total, :class => 'control-label float_left' %></div>
                 <div class="controls float_left">
-                  <%= f.text_field :total_times, :class => 'text_field input-small' %> H
+                  <%= f.text_field :total_times, :class => 'text_field input-small' , :id => "total_times_" + user.id.to_s%> H
                 </div>
               </div>
               <div class="float_left form-btn">
-
-                <%= link_to 'Save', user, :href => "/users/" + user.id.to_s + "/setting",  :class => "btn btn-primary setting save-setting", :id => "user_setting" + user.id.to_s %>
-                <a href="#" id="cancle_setting" class="btn">Cancle</a>
+                <%= submit_tag "Save",:class => "btn btn-primary save-setting", :id => "user_setting" + user.id.to_s, data: {setting:"user_setting_" + user.id.to_s,btn:"btn_" + user.id.to_s}%>
+               
+                <a href="#" class="btn cancle_setting" data-setting= "user_setting_<%= user.id.to_s%>" data-btn= "btn_<%= user.id.to_s%>">Cancle</a>
                
               </div>
-            <% end %>
+<% end %>
           </div>
-          <div id="btn_container">
+          <div class="btn_container" id="btn_<%= user.id.to_s%>">
              <div class="float_left">
-              <%= link_to 'Setting', user, :class => "btn btn-primary setting", :id => "btn_setting", :remote => true%>
+              <%= link_to 'Setting', user, :class => "btn btn-primary setting", data: {setting:"user_setting_" + user.id.to_s,btn:"btn_" + user.id.to_s},:remote => true, :id => "setting_" + user.id.to_s%>
             </div>
             <div class="float_left">
                <% if !user.approved %>

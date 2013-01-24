@@ -1,0 +1,21 @@
+ <%= form_for user, :remote => true, :method => :post ,:url => { :action => "setting", :id=>user.id } , :html => { :class => 'form-inline'} do |f| %>
+              <div class="control-group float_left">
+                <div class="float_left label-inline"><%= f.label :Employee, :class => 'control-label float_left' %></div>
+                <div class="controls float_left">
+                  <%= select_tag "user[employee_type]", options_for_select(["common","special
+"],"common"), :id => "employee_type_" + user.id.to_s%>
+                </div>
+             </div>
+             <div class="control-group float_left">
+                <div class="float_left label-inline"><%= f.label :Total, :class => 'control-label float_left' %></div>
+                <div class="controls float_left">
+                  <%= f.text_field :total_times, :class => 'text_field input-small' , :id => "etotal_times_" + user.id.to_s%> H
+                </div>
+              </div>
+              <div class="float_left form-btn">
+                <%= submit_tag "Save",:class => "btn btn-primary save-setting", :id => "user_setting" + user.id.to_s%>
+               
+                <a href="#" class="btn cancle_setting" data-setting= "user_setting_<%= user.id.to_s%>" data-btn= "btn_<%= user.id.to_s%>">Cancle</a>
+               
+              </div>
+<% end %>
