@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	
 	$(".approval").click(function(){
 		var url = $(this).attr("href");
 		var context = this;
@@ -12,7 +13,48 @@ $(document).ready(function(){
 					$(context).remove();
 			    }
 			    else {
-			        var data = xhr.responseText;
+			        alert("error");
+			    }
+			}
+		});
+		return false;
+	});
+	$(".vacation_approved").click(function(){
+		var url = $(this).attr("href");
+		var context = this;
+		$.ajax({
+			url: url,
+			type: "PUT",
+			async: false,
+			complete: function (data) {
+			    if (data.status === 200) {
+			        $(context).parent().html("<i class='icon-ok approved'></i>");
+					/*$(context).remove();
+					$(context).siblings().remove();*/
+			    }
+			    else {
+			       
+			       	alert(data);
+			    }
+			}
+		});
+		return false;
+	});
+	$(".vacation_disapproved").click(function(){
+		var url = $(this).attr("href");
+		var context = this;
+		$.ajax({
+			url: url,
+			type: "PUT",
+			async: false,
+			complete: function (data) {
+			    if (data.status === 200) {
+			        $(context).parent().html("<i class='icon-remove approved'></i>");
+					/*$(context).remove();
+					$(context).siblings().remove();*/
+			    }
+			    else {
+			        
 			       	alert(data);
 			    }
 			}

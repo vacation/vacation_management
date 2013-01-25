@@ -6,6 +6,7 @@ class EmailValidator < ActiveModel::EachValidator
   end
 end
 class User < ActiveRecord::Base
+  has_many :Profile
   #has_secure_password
    attr_accessible :password, :email, :username, :password_confirmation,:approved,:total_times,:employee_type
    attr_accessor :password#,:approved

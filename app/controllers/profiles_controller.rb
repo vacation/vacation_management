@@ -86,7 +86,34 @@ def update
   end
 end
 
-def show_profile_by_user
-
+  # put
+  # /profiles/1/approval
+  def approval
+  @profile = Profile.find(params[:id])
+  @user = User.where(:email =>  @profile.email).first
+  respond_to do |format|
+    if @profile.update_attribute("approved", "true")
+      UserMailer.vacation_approved(@user).deliver
+      format.js { render :json => {:result =>"success"},:layout => false, :status=>200}
+    else
+      format.js { render :json => {:result =>"error"},:layout => false, :status=>500}
+    end
+  end
 end
+
+# put
+  # /profiles/1/disapproval
+def decline
+  @profile = Profile.find(params[:id])
+  @user = User.where(:email =>  @profile.email).first
+  respond_to do |format|
+    if @profile.update_attribute("approved", "false")
+       UserMailer.vacation_declined(@user).deliver
+      format.js { render :json => {:result =>"success"},:layout => false, :status=>200}
+    else
+      format.js { render :json => {:result =>"error"},:layout => false, :status=>500}
+    end
+  end
+end
+
 end

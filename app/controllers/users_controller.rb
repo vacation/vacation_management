@@ -57,6 +57,7 @@ class UsersController < ApplicationController
 
   respond_to do |format|
     if @user.update_attribute("approved", "true")
+      UserMailer.account_approved(@user).deliver
       format.js { render :json => {:result =>"success1" , :user_id => @user.id.to_s},:layout => false, :status=>200}
     else
       format.js { render :json => {:result =>"error" , :user_id => @user.id.to_s},:layout => false, :status=>500}

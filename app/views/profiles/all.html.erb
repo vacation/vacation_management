@@ -11,6 +11,7 @@
       <th><%= model_class.human_attribute_name(:comment) %></th>
       <th><%= model_class.human_attribute_name(:hour) %></th>
       <th><%= model_class.human_attribute_name(:leave_type) %></th>
+      <th>rest time</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -23,10 +24,18 @@
         <td><%= profile.comment %></td>
         <td><%= profile.hour %>h<%= profile.minute %>m</td>
         <td><%= profile.leave_type %></td>
+         <td></td>
         <td>
           
           <div class="float_left">
-          <%= button_to 'Approval', profile,  :class => 'btn  btn-danger'%>
+          <% if !profile.approved %>
+            <%= link_to 'Approval', profile,  :class => 'btn  btn-info btn-small vacation_approved', :href =>"/profiles/" + profile.id.to_s + "/approval", :action => "approval", :remote => true%>
+            <%= link_to 'Decline', profile, :class => 'btn  btn-info btn-small vacation_disapproved', :href =>"/profiles/" + profile.id.to_s + "/decline", :action => "decline", :remote => true%>
+           <% elsif profile.approved == "true" %>
+              <i class='icon-ok approved'></i>
+           <% else %>
+              <i class='icon-remove approved'></i>
+          <% end %>
           </div>
         </td>
       </tr>

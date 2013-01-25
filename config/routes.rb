@@ -24,6 +24,11 @@ Auth::Application.routes.draw do
     put 'approval', :on => :member
     post 'setting', :on => :member
   end
+
+  resources :profiles do
+    put 'approval', :on => :member
+    put 'decline', :on => :member
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
