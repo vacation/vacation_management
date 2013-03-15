@@ -19,9 +19,9 @@
 </dl>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              profiles_path, :class => 'btn btn-primary'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_profile_path(@profile), :class => 'btn' %>
-  <%= button_to 'Destroy', profile, :method=>:delete, :confirm=>"Are you sure?" %>
+
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_profile_path(@profile), :class => 'btn' %>
+    <%= button_to 'Destroy', profile, :method=>:delete, :confirm=>"Are you sure?" %>
+
 </div>

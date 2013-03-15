@@ -22,12 +22,19 @@
         <td><%= profile.hour %>h<%= profile.minute %>m</td>
         <td><%= profile.leave_type %></td>
         <td>
-          <div class="float_left"><%= link_to t('.edit', :default => t("helpers.links.edit")),
+          <%if profile.approved == "true" %>
+            <i class='icon-ok approved'></i>
+          <%elsif profile.approved == "false"%>
+            <i class='icon-remove approved'></i>
+          <%else%>
+            <div class="float_left"><%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_profile_path(profile), :class => 'btn btn-primary btn-small eidt-btn' %>
           </div>
           <div class="float_left">
           <%= button_to 'Destroy', profile, :method=>:delete, :confirm=>"Are you sure?" , :class => 'btn  btn-danger'%>
           </div>
+          <%end%>
+         
         </td>
       </tr>
     <% end %>
